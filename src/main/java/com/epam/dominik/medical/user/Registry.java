@@ -1,35 +1,39 @@
 package com.epam.dominik.medical.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
+import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created by dominik on 4/11/17.
  */
-
-public class Registry {
-
+@Entity
+public class Registry implements Serializable{
+    @JsonProperty("hospital_name")
     private String hospitalName;
-
+    @JsonProperty("hospital_address")
     private String hospitalAddress;
-
+    @JsonProperty("hospital_city")
     private String hospitalCity;
-
+    @JsonProperty("hospital_unit")
     private String hospitalUnit;
+    @JsonProperty("hospital_room_no")
+    private int hospitalRoomNo;
+    @JsonProperty("hospital_bed_no")
+    private int hospitalBedNo;
+    @JsonProperty("registred_at")
+    private String registeredAt;
+    @JsonProperty("dismissed_at")
+    private String dismissedAt;
 
-    private String hospitalRoomNo;
-
-    private String hospitalBedNo;
-
-    private Date registeredAt;
-
-    private Date dismissedAt;
+    private @Id UUID uuid;
 
     private Registry(){};
 
-    public Registry(String hospitalName, String hospitalAddress, String hospitalCity, String hospitalUnit, String hospitalRoomNo, String hospitalBedNo, Date registeredAt, Date dismissedAt) {
+    public Registry(String hospitalName, String hospitalAddress, String hospitalCity, String hospitalUnit, int hospitalRoomNo, int hospitalBedNo, String registeredAt, String dismissedAt, UUID uuid) {
         this.hospitalName = hospitalName;
         this.hospitalAddress = hospitalAddress;
         this.hospitalCity = hospitalCity;
@@ -38,6 +42,7 @@ public class Registry {
         this.hospitalBedNo = hospitalBedNo;
         this.registeredAt = registeredAt;
         this.dismissedAt = dismissedAt;
+        this.uuid = uuid;
     }
 
     public String getHospitalName() {
@@ -72,36 +77,44 @@ public class Registry {
         this.hospitalUnit = hospitalUnit;
     }
 
-    public String getHospitalRoomNo() {
+    public int getHospitalRoomNo() {
         return hospitalRoomNo;
     }
 
-    public void setHospitalRoomNo(String hospitalRoomNo) {
+    public void setHospitalRoomNo(int hospitalRoomNo) {
         this.hospitalRoomNo = hospitalRoomNo;
     }
 
-    public String getHospitalBedNo() {
+    public int getHospitalBedNo() {
         return hospitalBedNo;
     }
 
-    public void setHospitalBedNo(String hospitalBedNo) {
+    public void setHospitalBedNo(int hospitalBedNo) {
         this.hospitalBedNo = hospitalBedNo;
     }
 
-    public Date getRegisteredAt() {
+    public String getRegisteredAt() {
         return registeredAt;
     }
 
-    public void setRegisteredAt(Date registeredAt) {
+    public void setRegisteredAt(String registeredAt) {
         this.registeredAt = registeredAt;
     }
 
-    public Date getDismissedAt() {
+    public String getDismissedAt() {
         return dismissedAt;
     }
 
-    public void setDismissedAt(Date dismissedAt) {
+    public void setDismissedAt(String dismissedAt) {
         this.dismissedAt = dismissedAt;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
 }

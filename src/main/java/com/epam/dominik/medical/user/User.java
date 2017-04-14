@@ -1,8 +1,11 @@
 package com.epam.dominik.medical.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.UUID;
 
 /**
@@ -10,25 +13,25 @@ import java.util.UUID;
  */
 @Entity
 public class User {
-
+    @JsonProperty("firstname")
     private String firstName;
-
+    @JsonProperty("secondname")
     private String secondName;
-
+    @JsonProperty("age")
     private int age;
-
+    @JsonProperty("address_street")
     private String addressStreet;
-
+    @JsonProperty("address_building")
     private String addressBuilding;
-
+    @JsonProperty("address_city")
     private String addressCity;
-
+    @JsonProperty("address_postalcode")
     private String addressPostalCode;
 
     private long pesel;
 
     private @Id @GeneratedValue UUID uuid;
-
+    @Transient
     private Registry registry;
 
     private User(){};
