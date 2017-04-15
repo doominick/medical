@@ -1,6 +1,7 @@
 package com.epam.dominik.medical.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Registry implements Serializable{
     private String registeredAt;
     @JsonProperty("dismissed_at")
     private String dismissedAt;
-
+    @Type(type = "uuid-char")
     private @Id UUID uuid;
 
     private Registry(){};

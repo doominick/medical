@@ -1,6 +1,7 @@
 package com.epam.dominik.medical.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class User {
     private String addressPostalCode;
 
     private long pesel;
-
+    @Type(type = "uuid-char")
     private @Id @GeneratedValue UUID uuid;
     @Transient
     private Registry registry;

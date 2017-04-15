@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 
 /**
@@ -18,6 +21,8 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/user/login")
 public class LoginController {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     UserRepository userRepository;
@@ -30,7 +35,9 @@ public class LoginController {
         ObjectMapper mapper = new ObjectMapper();
         User user = mapper.readValue(json,User.class);
         user = userRepository.findByPeselAndFirstNameAndSecondName(user.getPesel(), user.getFirstName(), user.getSecondName());
+        logger.info(user.getPesel() + " found!");
         user.setRegistry(registryRepository.findByUuid(user.getUuid()));
+        logger.info(user.getUuid().toString());
         return user;
     }
 

@@ -7,7 +7,7 @@ import java.util.UUID;
 /**
  * Created by dominik on 4/14/17.
  */
-public interface RegistryRepository extends CrudRepository<Registry, Long> {
+public interface RegistryRepository extends CrudRepository<Registry, UUID> {
 
     Registry findByUuid(UUID uuid);
 }
