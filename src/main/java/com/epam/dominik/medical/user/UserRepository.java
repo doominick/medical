@@ -13,4 +13,6 @@ public interface UserRepository extends CrudRepository<User, UUID>{
     User findByFirstName(String firstName);
 
     List<User> findBySecondName(String secondName);
+
+    User findByPeselAndFirstNameAndSecondName(long pesel, String firstName, String secondName);
 }
